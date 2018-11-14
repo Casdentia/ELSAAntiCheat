@@ -1,0 +1,12 @@
+name: LAC
+version: 1.0
+author: ExslodingDogs
+main: me.exslodingdogs.anticheat.AntiCheat
+
+commands:
+  elsa:
+    description: main command for elsa anticheat
+
+permissions:
+  LAC.alerts:
+    default: op
