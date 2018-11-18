@@ -1,8 +1,6 @@
 package me.exslodingdogs.anticheat;
 
 import io.netty.channel.*;
-import me.exslodingdogs.anticheat.Checks.Check;
-import me.exslodingdogs.anticheat.Checks.CheckResault;
 import me.exslodingdogs.anticheat.Checks.Combat.KillAura.Average;
 import me.exslodingdogs.anticheat.Checks.Movement.Flight_check;
 import me.exslodingdogs.anticheat.Checks.Movement.NOFALL_check;
@@ -10,7 +8,6 @@ import me.exslodingdogs.anticheat.Checks.Movement.NOSLOW_check;
 import me.exslodingdogs.anticheat.Checks.Movement.SPEED_check;
 import me.exslodingdogs.anticheat.Checks.Player.REGEN_check;
 import me.exslodingdogs.anticheat.Commands.Elsa_Command;
-import net.minecraft.server.v1_8_R3.PacketPlayOutKeepAlive;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;

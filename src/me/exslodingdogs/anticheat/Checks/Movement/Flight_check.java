@@ -1,7 +1,7 @@
 package me.exslodingdogs.anticheat.Checks.Movement;
 
 import me.exslodingdogs.anticheat.Checks.Check;
-import me.exslodingdogs.anticheat.Checks.CheckResault;
+import me.exslodingdogs.anticheat.Checks.CheckResult;
 import me.exslodingdogs.anticheat.Checks.CheckType;
 import me.exslodingdogs.anticheat.Checks.Movement.FLY.FLYSPEED;
 import me.exslodingdogs.anticheat.Checks.Posiblity;
@@ -34,7 +34,7 @@ public class Flight_check extends Check implements Listener {
             return;
         }
         FLYSPEED.FLYSPEEDCheck(speed);
-        if(FLYSPEED.FLYSPEEDCheck(speed) == CheckResault.Fail){
+        if(FLYSPEED.FLYSPEEDCheck(speed) == CheckResult.Fail){
             p.teleport(event.getFrom());
             Flag(p, Posiblity.Certain, 1);
         }

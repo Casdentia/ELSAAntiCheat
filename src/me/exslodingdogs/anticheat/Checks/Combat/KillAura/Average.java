@@ -2,7 +2,7 @@ package me.exslodingdogs.anticheat.Checks.Combat.KillAura;
 
 import me.exslodingdogs.anticheat.AntiCheat;
 import me.exslodingdogs.anticheat.Checks.Check;
-import me.exslodingdogs.anticheat.Checks.CheckResault;
+import me.exslodingdogs.anticheat.Checks.CheckResult;
 import me.exslodingdogs.anticheat.Checks.CheckType;
 import me.exslodingdogs.anticheat.Checks.Posiblity;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
@@ -37,7 +37,7 @@ public class Average extends Check implements Listener {
             if(!cps.containsKey(p)){
                 cps.put(p, 1);
             }
-            if(getResault() == CheckResault.Fail){
+            if(getResult() == CheckResult.Fail){
                 Flag(p, Posiblity.Certain, 1);
             }
         }

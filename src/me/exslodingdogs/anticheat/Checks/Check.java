@@ -11,7 +11,7 @@ public class Check {
     protected CheckType type;
     protected String nameofhack;
     private Posiblity posiblity;
-    private CheckResault resault;
+    private CheckResult result;
     static Check instance;
     public static Check getInstance(){
         return instance;
@@ -25,8 +25,8 @@ public class Check {
         return this.type;
     }
 
-    public CheckResault getResault(){return this.resault;}
-    public CheckResault setResault(CheckResault resault){return this.resault = resault;}
+    public CheckResult getResult(){return this.result;}
+    public CheckResult setResault(CheckResult resault){return this.result = resault;}
 
     public String getHack(){
         return this.nameofhack;
