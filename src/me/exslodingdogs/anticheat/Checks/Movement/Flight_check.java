@@ -4,7 +4,7 @@ import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckResult;
 import me.exslodingdogs.anticheat.Checks.CheckType;
 import me.exslodingdogs.anticheat.Checks.Movement.FLY.FLYSPEED;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
+import me.exslodingdogs.anticheat.Checks.Possibility;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,7 +36,7 @@ public class Flight_check extends Check implements Listener {
         FLYSPEED.FLYSPEEDCheck(speed);
         if(FLYSPEED.FLYSPEEDCheck(speed) == CheckResult.Fail){
             p.teleport(event.getFrom());
-            Flag(p, Posiblity.Certain, 1);
+            flag(p, Possibility.Certain, 1);
         }
 
     }

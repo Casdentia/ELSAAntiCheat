@@ -2,7 +2,7 @@ package me.exslodingdogs.anticheat.Checks.Movement;
 
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
+import me.exslodingdogs.anticheat.Checks.Possibility;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -63,7 +63,7 @@ public class SPEED_check extends Check implements Listener {
         int level;
         UUID uuid = player.getUniqueId();
         levelMap.put(uuid, (level = (levelMap.get(uuid) == null ? 0 : levelMap.get(uuid)) + 1));
-        Flag(player, Posiblity.Certain, level);
+        flag(player, Possibility.Certain, level);
     }
 
 }

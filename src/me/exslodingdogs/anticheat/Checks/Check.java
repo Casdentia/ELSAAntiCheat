@@ -6,19 +6,19 @@ import org.bukkit.entity.Player;
 
 public class Check {
 
-    public static String prefix = "&4&lELSA&r&7>> &7";
+    public static final String PREFIX = "&4&lELSA&r&7>> &7";
 
     protected CheckType type;
-    protected String nameofhack;
-    private Posiblity posiblity;
+    protected String hackName;
+    private Possibility possibility;
     private CheckResult result;
     static Check instance;
     public static Check getInstance(){
         return instance;
     }
-    public Check(CheckType type, String nameofhack){
+    public Check(CheckType type, String hackName){
         this.type = type;
-        this.nameofhack = nameofhack;
+        this.hackName = hackName;
     }
 
     public CheckType getType(){
@@ -26,23 +26,23 @@ public class Check {
     }
 
     public CheckResult getResult(){return this.result;}
-    public CheckResult setResault(CheckResult resault){return this.result = resault;}
+    public CheckResult setResult(CheckResult resault){return this.result = resault;}
 
     public String getHack(){
-        return this.nameofhack;
+        return this.hackName;
     }
 
-    public Posiblity getPosiblity(){return posiblity;}
+    public Possibility getPossibility(){return possibility;}
 
     public static String cc(String msg){
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    public void Flag(Player player, Posiblity posiblity, int alerts){
-        this.posiblity = posiblity;
+    public void flag(Player player, Possibility possibility, int alerts){
+        this.possibility = possibility;
        for(Player op :Bukkit.getOnlinePlayers()){
            if(op.hasPermission("LAC.alerts")){
-               op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &e" + getHack() + " &7[&cPosiblity: " + getPosiblity() + "&7][&cLVLl:" + alerts + "&7]"));
+               op.sendMessage(cc(PREFIX + "&c" + player.getName() + " &7failed &e" + getHack() + " &7[&cPosiblity: " + getPossibility() + "&7][&cLVLl:" + alerts + "&7]"));
            }
        }
     }

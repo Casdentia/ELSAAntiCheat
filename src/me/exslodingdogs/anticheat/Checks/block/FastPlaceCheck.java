@@ -1,11 +1,10 @@
 package me.exslodingdogs.anticheat.Checks.block;
 
 import me.exslodingdogs.anticheat.Checks.Check;
-import me.exslodingdogs.anticheat.Checks.CheckResult;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
-import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 
 public class FastPlaceCheck extends Check implements Listener {
 
@@ -13,33 +12,10 @@ public class FastPlaceCheck extends Check implements Listener {
         super(type, nameofhack);
     }
 
-    @Override
-    public CheckType getType() {
-        return super.getType();
+    @EventHandler
+    public void onBlockPlace(BlockPlaceEvent event) {
+
+
     }
 
-    @Override
-    public CheckResult getResult() {
-        return super.getResult();
-    }
-
-    @Override
-    public CheckResult setResault(CheckResult resault) {
-        return super.setResault(resault);
-    }
-
-    @Override
-    public String getHack() {
-        return super.getHack();
-    }
-
-    @Override
-    public Posiblity getPosiblity() {
-        return super.getPosiblity();
-    }
-
-    @Override
-    public void Flag(Player player, Posiblity posiblity, int alerts) {
-        super.Flag(player, posiblity, alerts);
-    }
 }

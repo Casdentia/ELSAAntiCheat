@@ -2,8 +2,7 @@ package me.exslodingdogs.anticheat.Checks.Movement;
 
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
-import org.bukkit.ChatColor;
+import me.exslodingdogs.anticheat.Checks.Possibility;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,9 +37,9 @@ public class NOSLOW_check extends Check implements Listener {
                     Flags.put(p, 1);
                 }
                 if(Flags.get(p) > 4){
-                    Flag(p, Posiblity.Certain, Flags.get(p));
+                    flag(p, Possibility.Certain, Flags.get(p));
                 }else{
-                    Flag(p, Posiblity.Possibly, Flags.get(p));
+                    flag(p, Possibility.Possibly, Flags.get(p));
                 }
                 p.teleport(event.getFrom());
             }

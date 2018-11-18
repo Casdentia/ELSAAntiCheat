@@ -4,7 +4,7 @@ import me.exslodingdogs.anticheat.AntiCheat;
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckResult;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
+import me.exslodingdogs.anticheat.Checks.Possibility;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -38,7 +38,7 @@ public class Average extends Check implements Listener {
                 cps.put(p, 1);
             }
             if(getResult() == CheckResult.Fail){
-                Flag(p, Posiblity.Certain, 1);
+                flag(p, Possibility.Certain, 1);
             }
         }
     }
@@ -54,7 +54,7 @@ public class Average extends Check implements Listener {
             }
             for(Player op :Bukkit.getOnlinePlayers()){
                 if(op.hasPermission("LAC.alerts")){
-                    op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &eKILLAURA(Average) &7[&cPosiblity: Possible&7][&cLVLl:" + flagged.get(player) + "&7]"));
+                    op.sendMessage(cc(PREFIX + "&c" + player.getName() + " &7failed &eKILLAURA(Average) &7[&cPosiblity: Possible&7][&cLVLl:" + flagged.get(player) + "&7]"));
                 }
             }
         }
@@ -66,7 +66,7 @@ public class Average extends Check implements Listener {
             }
             for(Player op :Bukkit.getOnlinePlayers()){
                 if(op.hasPermission("LAC.alerts")){
-                    op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &eKILLAURA(Average) &7[&cPosiblity: Certain&7][&cLVLl:" + flagged.get(player) + "&7]"));
+                    op.sendMessage(cc(PREFIX + "&c" + player.getName() + " &7failed &eKILLAURA(Average) &7[&cPosiblity: Certain&7][&cLVLl:" + flagged.get(player) + "&7]"));
                 }
             }
         }

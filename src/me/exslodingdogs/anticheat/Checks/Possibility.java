@@ -1,6 +1,6 @@
 package me.exslodingdogs.anticheat.Checks;
 
-public enum Posiblity {
+public enum Possibility {
     Certain,
     Possibly
 }
