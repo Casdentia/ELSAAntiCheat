@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class SPEED_check extends Check implements Listener {
 
@@ -16,64 +17,53 @@ public class SPEED_check extends Check implements Listener {
         super(CheckType.MOVENMENT, "SPEED");
     }
 
-    HashMap<Player, Integer> Level = new HashMap<>();
+    private HashMap<UUID, Integer> levelMap = new HashMap<>();
 
     @EventHandler
-    public void onmove(PlayerMoveEvent event){
-        Player p = (Player) event.getPlayer();
+    public void onMove(PlayerMoveEvent event){
+        Player player = event.getPlayer();
         double speed = event.getFrom().toVector().distance(event.getTo().toVector());
 
-        p.sendMessage(cc("&aSpeed: &7" + speed));
+        player.sendMessage(cc("&aSpeed: &7" + speed));
         //p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aSetSpeed: &7" + p.getWalkSpeed()*10));
 
         if(event.getFrom().getY() > event.getTo().getY()) {
             return;
         }
 
-        if(p.getAllowFlight() == true) {
+        if(player.getAllowFlight()) {
             return;
         }
 
-        if(!p.getLocation().subtract(0,1,0).getBlock().getType().isSolid()) {
+        if(!player.getLocation().subtract(0,1,0).getBlock().getType().isSolid()) {
             return;
         }
 
-        if(p.getWalkSpeed()*10 > 2.0) {
-            if(speed > 0.9*p.getWalkSpeed()*10) {
-                p.teleport(event.getFrom());
+        if(player.getWalkSpeed()*10 > 2.0) {
+            if(speed > 0.9*player.getWalkSpeed()*10) {
+                player.teleport(event.getFrom());
                 event.setCancelled(true);
-                if(Level.containsKey(p)) {
-                    Level.put(p, Level.get(p)+1);
-                    Flag(p, Posiblity.Certain, Level.get(p));
-                }else {
-                    Level.put(p, 1);
-                    Flag(p, Posiblity.Certain, Level.get(p));
-                }
+                handleLevel(player);
             }
         }
 
         if(speed > 0.59 && speed < 0.6) {
-            p.teleport(event.getFrom());
-            if(Level.containsKey(p)) {
-                Level.put(p, Level.get(p)+1);
-                Flag(p, Posiblity.Certain, Level.get(p));
-            }else {
-                Level.put(p, 1);
-                Flag(p, Posiblity.Certain, Level.get(p));
-            }
+            player.teleport(event.getFrom());
+            handleLevel(player);
         }
 
         if(speed > 0.9) {
-            p.teleport(event.getFrom());
+            player.teleport(event.getFrom());
             event.setCancelled(true);
-            if(Level.containsKey(p)) {
-                Level.put(p, Level.get(p)+1);
-                Flag(p, Posiblity.Certain, Level.get(p));
-            }else {
-                Level.put(p, 1);
-                Flag(p, Posiblity.Certain, Level.get(p));
-            }
+            handleLevel(player);
         }
+    }
+
+    private void handleLevel(Player player) {
+        int level;
+        UUID uuid = player.getUniqueId();
+        levelMap.put(uuid, (level = levelMap.get(uuid) + 1));
+        Flag(player, Posiblity.Certain, level);
     }
 
 }
