@@ -62,7 +62,7 @@ public class SPEED_check extends Check implements Listener {
     private void handleLevel(Player player) {
         int level;
         UUID uuid = player.getUniqueId();
-        levelMap.put(uuid, (level = levelMap.get(uuid) + 1));
+        levelMap.put(uuid, (level = (levelMap.get(uuid) == null ? 0 : levelMap.get(uuid)) + 1));
         Flag(player, Posiblity.Certain, level);
     }
 
