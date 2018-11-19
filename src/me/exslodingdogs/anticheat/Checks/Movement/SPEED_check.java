@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class SPEED_check extends Check implements Listener {
 
     public SPEED_check(){
-        super(CheckType.MOVENMENT, "SPEED");
+        super(CheckType.MOVENMENT, "SPEED", true);
     }
 
     HashMap<Player, Integer> Level = new HashMap<>();
@@ -22,10 +22,14 @@ public class SPEED_check extends Check implements Listener {
     public void onmove(PlayerMoveEvent event){
         Player p = (Player) event.getPlayer();
         double speed = event.getFrom().toVector().distance(event.getTo().toVector());
-
-        p.sendMessage(cc("&aSpeed: &7" + speed));
+        if(isEnabled() == false){
+            return;
+        }
+        if(p.isDead()){
+            return;
+        }
+        // p.sendMessage(cc("&aSpeed: &7" + speed));
         //p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aSetSpeed: &7" + p.getWalkSpeed()*10));
-
         if(event.getFrom().getY() > event.getTo().getY()) {
             return;
         }

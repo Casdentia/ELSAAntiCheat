@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class NOSLOW_check extends Check implements Listener {
 
     public NOSLOW_check(){
-        super(CheckType.MOVENMENT, "NOSLOW");
+        super(CheckType.MOVENMENT, "NOSLOW", true);
     }
     HashMap<Player, Integer> Flags = new HashMap<>();
 
@@ -22,7 +22,9 @@ public class NOSLOW_check extends Check implements Listener {
     public void onMove(PlayerMoveEvent event){
         Player p = event.getPlayer();
         double v = event.getFrom().toVector().distance(event.getTo().toVector());
-
+        if(isEnabled() == false){
+            return;
+        }
         //p.sendMessage(ChatColor.RED + "Speed: " + ChatColor.GRAY + v);
 
         if((event.getFrom().getY() < event.getTo().getY()) || (event.getFrom().getY() > event.getTo().getY())){

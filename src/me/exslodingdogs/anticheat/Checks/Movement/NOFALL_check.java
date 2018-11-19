@@ -15,13 +15,16 @@ import java.util.HashMap;
 public class NOFALL_check extends Check implements Listener {
 
     public NOFALL_check(){
-        super(CheckType.MOVENMENT, "NOFALL");
+        super(CheckType.MOVENMENT, "NOFALL", true);
     }
 
     ArrayList<Player> needschecking = new ArrayList<>();
     HashMap<Player, Integer> Level = new HashMap<>();
     @EventHandler
     public void onMove(PlayerMoveEvent event){
+        if(isEnabled() == false){
+            return;
+        }
         Player p = event.getPlayer();
         double i = event.getTo().toVector().distance(event.getFrom().toVector());
         boolean onground = false;
