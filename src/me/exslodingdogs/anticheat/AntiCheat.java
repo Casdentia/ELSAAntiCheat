@@ -1,8 +1,12 @@
 package me.exslodingdogs.anticheat;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.PacketAdapter;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.events.PacketEvent;
 import io.netty.channel.*;
-import me.exslodingdogs.anticheat.Checks.Check;
-import me.exslodingdogs.anticheat.Checks.CheckResault;
 import me.exslodingdogs.anticheat.Checks.Combat.KillAura.Average;
 import me.exslodingdogs.anticheat.Checks.Movement.Flight_check;
 import me.exslodingdogs.anticheat.Checks.Movement.NOFALL_check;
@@ -10,9 +14,7 @@ import me.exslodingdogs.anticheat.Checks.Movement.NOSLOW_check;
 import me.exslodingdogs.anticheat.Checks.Movement.SPEED_check;
 import me.exslodingdogs.anticheat.Checks.Player.REGEN_check;
 import me.exslodingdogs.anticheat.Commands.Elsa_Command;
-import net.minecraft.server.v1_8_R3.PacketPlayOutKeepAlive;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,8 +25,28 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class AntiCheat extends JavaPlugin implements Listener {
     static AntiCheat instance;
+
+    private static ProtocolManager protocolManager;
+
     @Override
     public void onEnable(){
+
+        protocolManager = ProtocolLibrary.getProtocolManager();
+
+        /* Experimental code for analyzing packets using ProtocolLib */
+        protocolManager.addPacketListener(new PacketAdapter(this, PacketType.values()) {
+            @Override
+            public void onPacketReceiving(PacketEvent event) {
+                PacketContainer packet = event.getPacket();
+                System.out.println("RECEIVING (type: " + packet.getType() + ")");
+            }
+
+            @Override
+            public void onPacketSending(PacketEvent event) {
+//                PacketContainer packet = event.getPacket();
+//                System.out.println("SENDING (type: " + packet.getType() + ")");
+            }
+        });
 
         getCommand("elsa").setExecutor(new Elsa_Command());
 
@@ -41,7 +63,6 @@ public class AntiCheat extends JavaPlugin implements Listener {
     public static AntiCheat getInstance(){
         return instance;
     }
-
 
     public void runTimedCheck(){
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
@@ -101,7 +122,7 @@ public class AntiCheat extends JavaPlugin implements Listener {
             @Override
             public void write(ChannelHandlerContext channelHandlerContext, Object packet, ChannelPromise channelPromise) throws Exception {
 
-                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "PACKET WRITE: " + ChatColor.GREEN + packet.toString());
+//                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "PACKET WRITE: " + ChatColor.GREEN + packet.toString());
 
                 super.write(channelHandlerContext, packet, channelPromise);
             }

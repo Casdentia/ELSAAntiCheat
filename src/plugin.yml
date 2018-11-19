@@ -2,6 +2,7 @@ name: LAC
 version: 1.0
 author: ExslodingDogs
 main: me.exslodingdogs.anticheat.AntiCheat
+depend: [ProtocolLib]
 
 commands:
   elsa:
