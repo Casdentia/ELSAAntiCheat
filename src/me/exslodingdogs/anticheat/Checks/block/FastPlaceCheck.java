@@ -6,7 +6,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class FastPlaceCheck extends Check implements Listener {
+
+    private Map<UUID, Long> traceMap = new HashMap<>();
 
     public FastPlaceCheck(CheckType type, String nameofhack) {
         super(type, nameofhack);
@@ -14,7 +20,6 @@ public class FastPlaceCheck extends Check implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-
 
     }
 
