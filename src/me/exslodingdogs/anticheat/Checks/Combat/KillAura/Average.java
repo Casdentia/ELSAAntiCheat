@@ -37,7 +37,7 @@ public class Average extends Check implements Listener {
             if(!cps.containsKey(p)){
                 cps.put(p, 1);
             }
-            if(getResult() == CheckResult.Fail){
+            if(getResult() == CheckResult.FAIL){
                 flag(p, Possibility.CERTAIN, 1);
             }
         }

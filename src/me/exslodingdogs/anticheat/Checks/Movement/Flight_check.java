@@ -34,7 +34,7 @@ public class Flight_check extends Check implements Listener {
             return;
         }
         FLYSPEED.FLYSPEEDCheck(speed);
-        if(FLYSPEED.FLYSPEEDCheck(speed) == CheckResult.Fail){
+        if(FLYSPEED.FLYSPEEDCheck(speed) == CheckResult.FAIL){
             p.teleport(event.getFrom());
             flag(p, Possibility.CERTAIN, 1);
         }
