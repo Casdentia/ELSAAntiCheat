@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class FastPlaceCheck extends Check implements Listener {
 
-    private Map<UUID, Pair<Long, Short>> traces = new HashMap<>();
+    private Map<UUID, Pair<Long, Short>> traceMap = new HashMap<>();
 
     public FastPlaceCheck() {
         super(CheckType.BLOCK, "FAST-PLACE");
@@ -29,12 +29,12 @@ public class FastPlaceCheck extends Check implements Listener {
         UUID uuid = player.getUniqueId();
 
 
-        if (!traces.containsKey(uuid)) {
-            traces.put(uuid, Pair.of(placeTime, (short) 0));
+        if (!traceMap.containsKey(uuid)) {
+            traceMap.put(uuid, Pair.of(placeTime, (short) 0));
             return;
         }
 
-        Pair<Long, Short> pair = traces.get(uuid);
+        Pair<Long, Short> pair = traceMap.get(uuid);
 
         long between = placeTime - pair.getLeft();
 
@@ -44,7 +44,7 @@ public class FastPlaceCheck extends Check implements Listener {
             super.flag(player, Possibility.POSSIBLE, pair.getValue());
         }
 
-        traces.put(player.getUniqueId(), Pair.of(placeTime, (short) (alert ? pair.getRight() + 1 : pair.getRight())));
+        traceMap.put(player.getUniqueId(), Pair.of(placeTime, (short) (alert ? pair.getRight() + 1 : pair.getRight())));
     }
 
 }
