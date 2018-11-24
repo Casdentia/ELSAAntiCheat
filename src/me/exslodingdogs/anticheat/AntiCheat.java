@@ -33,8 +33,13 @@ public class AntiCheat extends JavaPlugin implements Listener {
 
         protocolManager = ProtocolLibrary.getProtocolManager();
 
+        final PacketType[] packetsToCheck = {
+                PacketType.Play.Server.HELD_ITEM_SLOT,
+                PacketType.Play.Client.HELD_ITEM_SLOT
+        };
+
         /* Experimental code for analyzing packets using ProtocolLib */
-        protocolManager.addPacketListener(new PacketAdapter(this, PacketType.values()) {
+        protocolManager.addPacketListener(new PacketAdapter(this, packetsToCheck) {
             @Override
             public void onPacketReceiving(PacketEvent event) {
                 PacketContainer packet = event.getPacket();
@@ -43,8 +48,8 @@ public class AntiCheat extends JavaPlugin implements Listener {
 
             @Override
             public void onPacketSending(PacketEvent event) {
-//                PacketContainer packet = event.getPacket();
-//                System.out.println("SENDING (type: " + packet.getType() + ")");
+                PacketContainer packet = event.getPacket();
+                System.out.println("SENDING (type: " + packet.getType() + ")");
             }
         });
 

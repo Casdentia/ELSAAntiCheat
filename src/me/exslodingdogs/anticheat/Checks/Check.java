@@ -38,10 +38,10 @@ public class Check {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    public void Flag(Player player, Posiblity posiblity, int alerts){
+    public void Flag(Player player, Posiblity posiblity, int alerts) {
         this.posiblity = posiblity;
-       for(Player op :Bukkit.getOnlinePlayers()){
-           if(op.hasPermission("LAC.alerts")){
+       for(Player op :Bukkit.getOnlinePlayers()) {
+           if(op.hasPermission("LAC.alerts")) {
                op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &e" + getHack() + " &7[&cPosiblity: " + getPosiblity() + "&7][&cLVLl:" + alerts + "&7]"));
            }
        }
