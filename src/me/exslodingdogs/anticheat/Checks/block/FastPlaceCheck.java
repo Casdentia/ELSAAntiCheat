@@ -18,7 +18,7 @@ public class FastPlaceCheck extends Check implements Listener {
     private Map<UUID, Pair<Long, Short>> traces = new HashMap<>();
 
     public FastPlaceCheck() {
-        super(CheckType.BLOCK, "fast-place");
+        super(CheckType.BLOCK, "FAST-PLACE");
     }
 
     @EventHandler
@@ -43,8 +43,6 @@ public class FastPlaceCheck extends Check implements Listener {
             alert = true;
             super.flag(player, Possibility.POSSIBLE, pair.getValue());
         }
-
-        System.out.println("Time between: " + between + "ms.");
 
         traces.put(player.getUniqueId(), Pair.of(placeTime, (short) (alert ? pair.getRight() + 1 : pair.getRight())));
     }
