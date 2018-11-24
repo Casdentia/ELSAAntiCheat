@@ -39,6 +39,8 @@ public class FastPlaceCheck extends Check implements Listener {
         long between = placeTime - pair.getLeft();
 
         boolean alert = false;
+
+        /* if time between block place is < 150; flag the player */
         if (between < 150) {
             alert = true;
             super.flag(player, Possibility.POSSIBLE, pair.getValue());
