@@ -7,9 +7,9 @@ import me.exslodingdogs.anticheat.Checks.Movement.NOFALL_check;
 import me.exslodingdogs.anticheat.Checks.Movement.NOSLOW_check;
 import me.exslodingdogs.anticheat.Checks.Movement.SPEED_check;
 import me.exslodingdogs.anticheat.Checks.Player.REGEN_check;
+import me.exslodingdogs.anticheat.Checks.block.FastPlaceCheck;
 import me.exslodingdogs.anticheat.Commands.Elsa_Command;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -33,6 +33,7 @@ public class AntiCheat extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new REGEN_check(), this);
         Bukkit.getPluginManager().registerEvents(new me.exslodingdogs.anticheat.Checks.Combat.KillAura.Average(), this);
         Bukkit.getPluginManager().registerEvents(new Flight_check(), this);
+        Bukkit.getPluginManager().registerEvents(new FastPlaceCheck(), this);
     }
 
     public static AntiCheat getInstance(){
@@ -98,7 +99,7 @@ public class AntiCheat extends JavaPlugin implements Listener {
             @Override
             public void write(ChannelHandlerContext channelHandlerContext, Object packet, ChannelPromise channelPromise) throws Exception {
 
-                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "PACKET WRITE: " + ChatColor.GREEN + packet.toString());
+//                Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "PACKET WRITE: " + ChatColor.GREEN + packet.toString());
 
                 super.write(channelHandlerContext, packet, channelPromise);
             }

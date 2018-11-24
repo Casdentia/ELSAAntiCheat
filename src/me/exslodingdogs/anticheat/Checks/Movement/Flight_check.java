@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 public class Flight_check extends Check implements Listener {
 
     public Flight_check(){
-        super(CheckType.MOVENMENT, "FLY");
+        super(CheckType.MOVEMENT, "FLY");
     }
 
     @EventHandler
@@ -36,7 +36,7 @@ public class Flight_check extends Check implements Listener {
         FLYSPEED.FLYSPEEDCheck(speed);
         if(FLYSPEED.FLYSPEEDCheck(speed) == CheckResult.Fail){
             p.teleport(event.getFrom());
-            flag(p, Possibility.Certain, 1);
+            flag(p, Possibility.CERTAIN, 1);
         }
 
     }

@@ -38,7 +38,7 @@ public class Average extends Check implements Listener {
                 cps.put(p, 1);
             }
             if(getResult() == CheckResult.Fail){
-                flag(p, Possibility.Certain, 1);
+                flag(p, Possibility.CERTAIN, 1);
             }
         }
     }
@@ -66,7 +66,7 @@ public class Average extends Check implements Listener {
             }
             for(Player op :Bukkit.getOnlinePlayers()){
                 if(op.hasPermission("LAC.alerts")){
-                    op.sendMessage(cc(PREFIX + "&c" + player.getName() + " &7failed &eKILLAURA(Average) &7[&cPosiblity: Certain&7][&cLVLl:" + flagged.get(player) + "&7]"));
+                    op.sendMessage(cc(PREFIX + "&c" + player.getName() + " &7failed &eKILLAURA(Average) &7[&cPosiblity: CERTAIN&7][&cLVLl:" + flagged.get(player) + "&7]"));
                 }
             }
         }

@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class NOSLOW_check extends Check implements Listener {
 
     public NOSLOW_check(){
-        super(CheckType.MOVENMENT, "NOSLOW");
+        super(CheckType.MOVEMENT, "NOSLOW");
     }
     HashMap<Player, Integer> Flags = new HashMap<>();
 
@@ -37,9 +37,9 @@ public class NOSLOW_check extends Check implements Listener {
                     Flags.put(p, 1);
                 }
                 if(Flags.get(p) > 4){
-                    flag(p, Possibility.Certain, Flags.get(p));
+                    flag(p, Possibility.CERTAIN, Flags.get(p));
                 }else{
-                    flag(p, Possibility.Possibly, Flags.get(p));
+                    flag(p, Possibility.POSSIBLE, Flags.get(p));
                 }
                 p.teleport(event.getFrom());
             }

@@ -42,9 +42,9 @@ public class REGEN_check extends Check implements Listener {
                 flagged.put(player, 1);
             }
             if(flagged.get(player) > 3){
-                flag(player, Possibility.Certain, flagged.get(player));
+                flag(player, Possibility.CERTAIN, flagged.get(player));
             }else{
-                flag(player, Possibility.Possibly, flagged.get(player));
+                flag(player, Possibility.POSSIBLE, flagged.get(player));
             }
 
         }

@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class NOFALL_check extends Check implements Listener {
 
     public NOFALL_check(){
-        super(CheckType.MOVENMENT, "NOFALL");
+        super(CheckType.MOVEMENT, "NOFALL");
     }
 
     ArrayList<Player> needschecking = new ArrayList<>();
@@ -50,7 +50,7 @@ public class NOFALL_check extends Check implements Listener {
                         }else{
                             Level.put(p, 1);
                         }
-                        flag(p, Possibility.Certain, Level.get(p));
+                        flag(p, Possibility.CERTAIN, Level.get(p));
                         p.teleport(event.getFrom());
                     }
                 }

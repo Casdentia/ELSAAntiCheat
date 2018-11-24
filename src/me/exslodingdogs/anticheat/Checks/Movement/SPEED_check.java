@@ -14,7 +14,7 @@ import java.util.UUID;
 public class SPEED_check extends Check implements Listener {
 
     public SPEED_check(){
-        super(CheckType.MOVENMENT, "SPEED");
+        super(CheckType.MOVEMENT, "SPEED");
     }
 
     private HashMap<UUID, Integer> levelMap = new HashMap<>();
@@ -63,7 +63,7 @@ public class SPEED_check extends Check implements Listener {
         int level;
         UUID uuid = player.getUniqueId();
         levelMap.put(uuid, (level = (levelMap.get(uuid) == null ? 0 : levelMap.get(uuid)) + 1));
-        flag(player, Possibility.Certain, level);
+        flag(player, Possibility.CERTAIN, level);
     }
 
 }
