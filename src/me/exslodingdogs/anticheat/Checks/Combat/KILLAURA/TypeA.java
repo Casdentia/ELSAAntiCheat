@@ -15,10 +15,10 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import java.util.HashMap;
 
-public class Average extends Check implements Listener {
+public class TypeA extends Check implements Listener {
 
-    public Average(){
-        super(CheckType.COMBAT, "KILLAURA(Average)");
+    public TypeA(){
+        super(CheckType.COMBAT, "KILLAURA(TypeA)", true);
     }
     public static HashMap<Player, Integer> hps = new HashMap<>();
     public static HashMap<Player, Integer> cps = new HashMap<>();
@@ -26,6 +26,9 @@ public class Average extends Check implements Listener {
     private static AntiCheat ac = AntiCheat.getPlugin(AntiCheat.class);
     @EventHandler
     public void onhit(EntityDamageByEntityEvent event){
+        if(isEnabled() == false){
+            return;
+        }
         if(event.getDamager() instanceof Player){
             Player p = (Player) event.getDamager();
             if(hps.containsKey(p)){
@@ -46,27 +49,23 @@ public class Average extends Check implements Listener {
     public static void Check(Player player){
         double r = hps.get(player)/cps.get(player);
         //player.sendMessage(r + "");
-        if((hps.get(player) == cps.get(player) || cps.get(player) > 3) && getPing(player) <= 300){
-            if(flagged.containsKey(player)){
-                flagged.put(player, flagged.get(player)+1);
-            }else{
-                flagged.put(player, 1);
-            }
-            for(Player op :Bukkit.getOnlinePlayers()){
-                if(op.hasPermission("LAC.alerts")){
-                    op.sendMessage(cc(PREFIX + "&c" + player.getName() + " &7failed &eKILLAURA(Average) &7[&cPosiblity: Possible&7][&cLVLl:" + flagged.get(player) + "&7]"));
-                }
-            }
-        }
         if(r >= 17.0 && getPing(player) <= 300){
             if(flagged.containsKey(player)){
                 flagged.put(player, flagged.get(player)+1);
             }else{
                 flagged.put(player, 1);
             }
-            for(Player op :Bukkit.getOnlinePlayers()){
-                if(op.hasPermission("LAC.alerts")){
-                    op.sendMessage(cc(PREFIX + "&c" + player.getName() + " &7failed &eKILLAURA(Average) &7[&cPosiblity: CERTAIN&7][&cLVLl:" + flagged.get(player) + "&7]"));
+            if(flagged.get(player) > 4){
+                for(Player op :Bukkit.getOnlinePlayers()){
+                    if(op.hasPermission("LAC.alerts")){
+                        op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &eKILLAURA(TypeA) &7[&cPosiblity: Certain&7][&cLVLl:" + flagged.get(player) + "&7]"));
+                    }
+                }
+            }else{
+                for(Player op :Bukkit.getOnlinePlayers()){
+                    if(op.hasPermission("LAC.alerts")){
+                        op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &eKILLAURA(TypeA) &7[&cPosiblity: Possibly&7][&cLVLl:" + flagged.get(player) + "&7]"));
+                    }
                 }
             }
         }

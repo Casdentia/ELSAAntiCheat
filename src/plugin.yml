@@ -1,12 +1,13 @@
-name: LAC
+name: elsa
 version: 1.0
 author: ExslodingDogs
 main: me.exslodingdogs.anticheat.AntiCheat
+depend: [ProtocolLib]
 
 commands:
   elsa:
     description: main command for elsa anticheat
 
 permissions:
-  LAC.alerts:
+  elsa.alerts:
     default: op

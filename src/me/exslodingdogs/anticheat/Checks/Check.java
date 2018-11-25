@@ -6,23 +6,22 @@ import org.bukkit.entity.Player;
 
 public class Check {
 
-    public static final String PREFIX = "&4&lELSA&r&7>> &7";
+    public static String prefix = "&8[&6&lElsa&r&8] &7";
 
     protected CheckType type;
     protected String hackName;
     private Possibility possibility;
     private CheckResult result;
-    static Check instance;
-    public static Check getInstance(){
-        return instance;
-    }
-    public Check(CheckType type, String hackName){
+    private boolean enabled;
+
+    public Check(CheckType type, String hackName, boolean enabled){
         this.type = type;
         this.hackName = hackName;
+        this.enabled = enabled;
     }
 
-    public CheckType getType(){
-        return this.type;
+    public Boolean isEnabled(){
+        return enabled;
     }
 
     public CheckResult getResult(){return this.result;}
@@ -41,8 +40,8 @@ public class Check {
     public void flag(Player player, Possibility possibility, int alerts){
         this.possibility = possibility;
        for(Player op :Bukkit.getOnlinePlayers()){
-           if(op.hasPermission("LAC.alerts")){
-               op.sendMessage(cc(PREFIX + "&c" + player.getName() + " &7failed &e" + getHack() + " &7[&cPosiblity: " + getPossibility() + "&7][&cLVLl:" + alerts + "&7]"));
+           if(op.hasPermission("elsa.alerts")){
+               op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &e" + getHack() + " &7[&cPosiblity: " + getPossibility() + "&7][&cLVLl:" + alerts + "&7]"));
            }
        }
     }

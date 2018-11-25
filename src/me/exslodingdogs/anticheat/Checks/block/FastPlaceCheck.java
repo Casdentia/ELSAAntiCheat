@@ -18,7 +18,7 @@ public class FastPlaceCheck extends Check implements Listener {
     private Map<UUID, Pair<Long, Short>> traceMap = new HashMap<>();
 
     public FastPlaceCheck() {
-        super(CheckType.BLOCK, "FAST-PLACE");
+        super(CheckType.BLOCK, "FAST-PLACE", false);
     }
 
     @EventHandler
