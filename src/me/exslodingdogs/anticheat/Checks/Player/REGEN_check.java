@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class REGEN_check extends Check implements Listener {
 
     public REGEN_check(){
-        super(CheckType.OTHER, "REGEN");
+        super(CheckType.OTHER, "REGEN", true);
     }
     public static HashMap<Player, Integer> timespersec = new HashMap<>();
     public static HashMap<Player, Integer> flagged = new HashMap<>();
@@ -24,6 +24,9 @@ public class REGEN_check extends Check implements Listener {
 
     @EventHandler
     public void onRegen(EntityRegainHealthEvent event){
+        if(isEnabled() == false){
+            return;
+        }
         if(event.getEntity() instanceof Player){
             Player p = (Player) event.getEntity();
             if(timespersec.containsKey(p)){
@@ -35,7 +38,7 @@ public class REGEN_check extends Check implements Listener {
         }
     }
     public void result(Player player){
-        if(timespersec.get(player) > 1){
+        if(timespersec.get(player) > 2){
             if(flagged.containsKey(player)){
                 flagged.put(player, flagged.get(player)+1);
             }else{

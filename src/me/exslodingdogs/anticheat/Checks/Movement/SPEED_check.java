@@ -14,7 +14,7 @@ import java.util.UUID;
 public class SPEED_check extends Check implements Listener {
 
     public SPEED_check(){
-        super(CheckType.MOVEMENT, "SPEED");
+        super(CheckType.MOVEMENT, "SPEED", true);
     }
 
     private HashMap<UUID, Integer> levelMap = new HashMap<>();
@@ -23,10 +23,14 @@ public class SPEED_check extends Check implements Listener {
     public void onMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
         double speed = event.getFrom().toVector().distance(event.getTo().toVector());
-
-        player.sendMessage(cc("&aSpeed: &7" + speed));
+        if(isEnabled() == false){
+            return;
+        }
+        if(player.isDead()){
+            return;
+        }
+        // p.sendMessage(cc("&aSpeed: &7" + speed));
         //p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aSetSpeed: &7" + p.getWalkSpeed()*10));
-
         if(event.getFrom().getY() > event.getTo().getY()) {
             return;
         }
