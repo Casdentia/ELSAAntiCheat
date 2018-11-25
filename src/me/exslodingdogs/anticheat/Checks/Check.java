@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class Check {
 
-    public static String prefix = "&8[&6&lElsa&r&8] &7";
+    public static String prefix = "&8(&6&lELSA&r&8) &7";
 
     protected CheckType type;
     protected String nameofhack;
@@ -40,7 +40,7 @@ public class Check {
         this.posiblity = posiblity;
        for(Player op :Bukkit.getOnlinePlayers()){
            if(op.hasPermission("elsa.alerts")){
-               op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &e" + getHack() + " &7[&cPosiblity: " + getPosiblity() + "&7][&cLVLl:" + alerts + "&7]"));
+               op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &e" + getHack() + " &8[&cPosiblity: " + getPosiblity() + "&8] [&cLVL: " + alerts + "&8]"));
            }
        }
     }

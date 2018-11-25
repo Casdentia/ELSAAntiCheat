@@ -47,7 +47,10 @@ this is for hard to detect checks
                 if(event.getPlayer().getLocation().subtract(0,1,0).getBlock().getType().isSolid()){
                     return;
                 }
-                if(speed > 0.19 && speed < 0.24){
+            if(event.getPlayer().getLocation().subtract(0,1,0).getBlock().getType() == null){
+                return;
+            }
+                if(speed > 0.199 && speed < 0.2){
                     Flag(player, Posiblity.Possibly, 1);
                     player.teleport(from);
                 }
@@ -56,10 +59,14 @@ this is for hard to detect checks
         if(from.getY() < to.getY()){
 
                 if(speed > 0.21 && speed < 0.28){
+                    if((to.getY() - from.getY()) > 0.5 && ((to.getY() - from.getY()) < 0.55)){
+                        return;
+                    }
                     if((to.getY() - from.getY()) > 0.0196 && (to.getY() - from.getY()) < 0.0197){
                         Flag(player, Posiblity.Possibly, 1);
                         player.teleport(from);
                     }
+
 
                 }
                 if(speed > 0.30000004 && speed < 0.30000009){

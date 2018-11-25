@@ -25,7 +25,6 @@ public class NOSLOW_check extends Check implements Listener {
         if(isEnabled() == false){
             return;
         }
-        //p.sendMessage(ChatColor.RED + "Speed: " + ChatColor.GRAY + v);
 
         if((event.getFrom().getY() < event.getTo().getY()) || (event.getFrom().getY() > event.getTo().getY())){
             return;

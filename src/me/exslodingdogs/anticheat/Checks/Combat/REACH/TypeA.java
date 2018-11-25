@@ -25,10 +25,14 @@ public class TypeA extends Check implements Listener {
         }
         Player p = (Player) event.getDamager();
         Entity t = event.getEntity();
+        double distance = p.getLocation().toVector().distance(t.getLocation().toVector());
         //p.sendMessage(p.getLocation().toVector().distance(t.getLocation().toVector()) + "");
-        if(p.getLocation().toVector().distance(t.getLocation().toVector()) > 3.7 && me.exslodingdogs.anticheat.Checks.Combat.KILLAURA.TypeA.getPing(p) < 400){
-            Flag(p, Posiblity.Certain, 1);
+
+        if(distance > 0.38){
+            event.setCancelled(true);
+            Flag(p, Posiblity.Possibly, 1);
         }
+
 
     }
 

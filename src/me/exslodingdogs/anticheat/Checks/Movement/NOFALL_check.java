@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class NOFALL_check extends Check implements Listener {
 
     public NOFALL_check(){
-        super(CheckType.MOVENMENT, "NOFALL", true);
+        super(CheckType.MOVENMENT, "NOFALL(Fall)", true);
     }
 
     ArrayList<Player> needschecking = new ArrayList<>();
@@ -27,7 +27,7 @@ public class NOFALL_check extends Check implements Listener {
         }
         Player p = event.getPlayer();
         double i = event.getTo().toVector().distance(event.getFrom().toVector());
-        boolean onground = false;
+        boolean onground;
         if(event.getFrom().getY() < event.getTo().getY()){
             return;
         }
@@ -60,9 +60,6 @@ public class NOFALL_check extends Check implements Listener {
             }
         }
 
-        //p.sendMessage(p.getFallDistance() + "");
-        //p.sendMessage(i + "");
-        //p.sendMessage(onground + "");
 
     }
 

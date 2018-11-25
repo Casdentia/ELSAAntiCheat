@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class REGEN_check extends Check implements Listener {
 
     public REGEN_check(){
-        super(CheckType.OTHER, "REGEN", true);
+        super(CheckType.OTHER, "REGEN", false);
     }
     public static HashMap<Player, Integer> timespersec = new HashMap<>();
     public static HashMap<Player, Integer> flagged = new HashMap<>();
@@ -38,7 +38,7 @@ public class REGEN_check extends Check implements Listener {
         }
     }
     public void result(Player player){
-        if(timespersec.get(player) > 2){
+        if(timespersec.get(player) >= 3){
             if(flagged.containsKey(player)){
                 flagged.put(player, flagged.get(player)+1);
             }else{

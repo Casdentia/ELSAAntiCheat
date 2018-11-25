@@ -28,8 +28,6 @@ public class TypeB extends Check implements Listener {
         if(from.getY() >= to.getY()){
             return;
         }
-        player.sendMessage("vspeed : " + speed);
-        player.sendMessage("changed by : " + (to.getY() - from.getY()));
         if((to.getY() - from.getY()) >= 0.5){
             if(speed >= 0.79){
                 Flag(player, Posiblity.Possibly, 1);

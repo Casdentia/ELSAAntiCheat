@@ -14,31 +14,14 @@ public class Elsa_Command implements CommandExecutor {
         if(sender instanceof Player){
             Player p = (Player) sender;
             if(p.hasPermission("elsa")){
-                if(args.length == 0){
-                    p.sendMessage("help message!");
-                    return true;
-                }
-                if(args[0].equalsIgnoreCase("check")){
-                    if(args.length >= 1){
-                        p.sendMessage("/elsa check <name> <check>");
-                        return true;
-                    }
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', ""));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7/elsa alerts &f- toggles alerts"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7/elsa reload &f- reloads the config"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7/elsa check <player> &f- Checks flags of a players"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7/elsa report <player> &f- reports a player"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7/elsa autoban <true/false> &f- toggles autoban"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', ""));
 
-                    Player t = (Player) Bukkit.getServer().getPlayer(args[1]);
-                    if(t== null){
-                        p.sendMessage("Player not found!");
-                        return true;
-                    }
-                    String check = args[2].toLowerCase();
-                    if(check == null){
-                        p.sendMessage("/elsa check <name> <check>");
-                        return true;
-                    }
-                    if(check.equals("REGEN")){
-                        t.damage(3);
-                        return true;
-                    }
-                }
             }
         }else{
             sender.sendMessage("this command is not yet for the console!");

@@ -23,10 +23,8 @@ public class TypeA extends Check implements Listener {
             return;
         }
         if(event.getFrom().getY() != event.getTo().getY()){
-            //event.getPlayer().sendMessage("Chnaged!");
             return;
         }
-        event.getPlayer().sendMessage("speed : " + speed);
         if(!event.getPlayer().getLocation().subtract(0,1,0).getBlock().getType().isSolid() && speed > 0.8){
             event.setCancelled(true);
             event.getPlayer().teleport(event.getFrom());
