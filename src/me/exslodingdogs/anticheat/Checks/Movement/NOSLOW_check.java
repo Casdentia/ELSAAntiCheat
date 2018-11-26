@@ -38,9 +38,9 @@ public class NOSLOW_check extends Check implements Listener {
                     Flags.put(p, 1);
                 }
                 if(Flags.get(p) > 4){
-                    Flag(p, Possibility.CERTAIN, Flags.get(p));
+                    flag(p, Possibility.CERTAIN, Flags.get(p));
                 }else{
-                    Flag(p, Possibility.POSSIBLE, Flags.get(p));
+                    flag(p, Possibility.POSSIBLE, Flags.get(p));
                 }
                 p.teleport(event.getFrom());
             }

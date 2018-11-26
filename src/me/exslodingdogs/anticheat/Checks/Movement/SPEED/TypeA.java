@@ -36,49 +36,49 @@ public class TypeA extends Check implements Listener {
         player.sendMessage(ChatColor.RED + "SPEED: " + ChatColor.GRAY + speed);
         if((to.getY() - from.getY()) == 0){
             if(speed > 0.79){
-                Flag(player, Possibility.CERTAIN, 1);
+                flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
 
             if(speed > 0.49 && speed < 0.525){
-                Flag(player, Possibility.POSSIBLE, 1);
+                flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
             if(speed > 0.69 && speed < 0.7){
-                Flag(player, Possibility.CERTAIN, 1);
+                flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
             if(speed > 0.66 && speed < 0.67){
-                Flag(player, Possibility.CERTAIN, 1);
+                flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
             if(speed > 0.41 && speed < 0.429){
-                Flag(player, Possibility.POSSIBLE, 1);
+                flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
             if(speed > 0.54 && speed < 0.579){
-                Flag(player, Possibility.CERTAIN, 1);
+                flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
 
             if(speed > 0.28061664 && speed < 0.28061669 && !player.isSprinting()){
-                Flag(player, Possibility.POSSIBLE, 1);
+                flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
             if(speed > 0.146 && speed < 0.149){
-                Flag(player, Possibility.POSSIBLE, 1);
+                flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
             if(speed > 0.1738 && speed < 0.1762){
-                Flag(player, Possibility.POSSIBLE, 1);
+                flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
             if(speed > 0.2899 && speed < 0.29){
-                Flag(player, Possibility.CERTAIN, 1);
+                flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
             if(speed > 0.62739 && speed < 0.6274){
-                Flag(player, Possibility.CERTAIN, 1);
+                flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
             return;
@@ -94,7 +94,7 @@ public class TypeA extends Check implements Listener {
             if(speed > 0.8){
                 event.setCancelled(true);
                 player.teleport(from);
-                Flag(player, Possibility.CERTAIN, 1);
+                flag(player, Possibility.CERTAIN, 1);
                 return;
             }
 

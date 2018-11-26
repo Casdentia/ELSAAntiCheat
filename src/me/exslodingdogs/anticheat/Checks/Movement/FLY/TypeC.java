@@ -51,7 +51,7 @@ this is for hard to detect checks
                 return;
             }
                 if(speed > 0.199 && speed < 0.2){
-                    Flag(player, Possibility.POSSIBLE, 1);
+                    flag(player, Possibility.POSSIBLE, 1);
                     player.teleport(from);
                 }
             return;
@@ -63,7 +63,7 @@ this is for hard to detect checks
                         return;
                     }
                     if((to.getY() - from.getY()) > 0.0196 && (to.getY() - from.getY()) < 0.0197){
-                        Flag(player, Possibility.POSSIBLE, 1);
+                        flag(player, Possibility.POSSIBLE, 1);
                         player.teleport(from);
                     }
 
@@ -73,7 +73,7 @@ this is for hard to detect checks
                     if(speed < 0.30000003 && speed > 0.30000001){
                         return;
                     }
-                    Flag(player, Possibility.POSSIBLE, 1);
+                    flag(player, Possibility.POSSIBLE, 1);
                     player.teleport(from);
                 }
             return;

@@ -53,7 +53,7 @@ public class NOFALL_check extends Check implements Listener {
                         }else{
                             Level.put(p, 1);
                         }
-                        Flag(p, Possibility.CERTAIN, Level.get(p));
+                        flag(p, Possibility.CERTAIN, Level.get(p));
                         p.teleport(event.getFrom());
                     }
                 }

@@ -9,14 +9,14 @@ public class Check {
     public static String prefix = "&8(&6&lELSA&r&8) &7";
 
     protected CheckType type;
-    protected String nameofhack;
+    protected String hackName;
     private Possibility possibility;
     private CheckResult result;
     private boolean enabled;
 
-    public Check(CheckType type, String nameofhack, boolean enabled){
+    public Check(CheckType type, String hackName, boolean enabled){
         this.type = type;
-        this.nameofhack = nameofhack;
+        this.hackName = hackName;
         this.enabled = enabled;
     }
 
@@ -27,7 +27,7 @@ public class Check {
     public CheckResult getResult(){return this.result;}
 
     public String getHack(){
-        return this.nameofhack;
+        return this.hackName;
     }
 
     public Possibility getPossibility(){return possibility;}
@@ -36,7 +36,7 @@ public class Check {
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    public void Flag(Player player, Possibility possibility, int alerts){
+    public void flag(Player player, Possibility possibility, int alerts){
         this.possibility = possibility;
        for(Player op :Bukkit.getOnlinePlayers()){
            if(op.hasPermission("elsa.alerts")){

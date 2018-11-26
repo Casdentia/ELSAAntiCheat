@@ -41,7 +41,7 @@ public class TypeA extends Check implements Listener {
                 cps.put(p, 1);
             }
             if(getResult() == CheckResult.FAIL){
-                Flag(p, Possibility.CERTAIN, 1);
+                flag(p, Possibility.CERTAIN, 1);
             }
         }
     }

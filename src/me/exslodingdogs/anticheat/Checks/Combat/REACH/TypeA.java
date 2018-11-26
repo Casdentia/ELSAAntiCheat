@@ -30,7 +30,7 @@ public class TypeA extends Check implements Listener {
 
         if(distance > 0.38){
             event.setCancelled(true);
-            Flag(p, Possibility.POSSIBLE, 1);
+            flag(p, Possibility.POSSIBLE, 1);
         }
 
 

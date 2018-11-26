@@ -28,7 +28,7 @@ public class TypeA extends Check implements Listener {
         if(!event.getPlayer().getLocation().subtract(0,1,0).getBlock().getType().isSolid() && speed > 0.8){
             event.setCancelled(true);
             event.getPlayer().teleport(event.getFrom());
-            Flag(event.getPlayer(), Possibility.CERTAIN, 1);
+            flag(event.getPlayer(), Possibility.CERTAIN, 1);
         }
 
     }

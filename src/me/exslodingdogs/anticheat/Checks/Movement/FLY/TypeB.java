@@ -30,7 +30,7 @@ public class TypeB extends Check implements Listener {
         }
         if((to.getY() - from.getY()) >= 0.5){
             if(speed >= 0.79){
-                Flag(player, Possibility.POSSIBLE, 1);
+                flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
         }
