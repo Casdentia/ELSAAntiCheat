@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 public class TypeB extends Check implements Listener {
 
     public TypeB(){
-        super(CheckType.MOVENMENT, "SPEED(TypeB)", true);
+        super(CheckType.MOVEMENT, "SPEED(TypeB)", true);
     }
     /*
 

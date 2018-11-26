@@ -1,7 +1,6 @@
 package me.exslodingdogs.anticheat.Checks;
 
-public enum CheckResault {
-
+public enum CheckResult {
     PASS,
-    Fail
+    FAIL
 }

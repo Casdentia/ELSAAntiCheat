@@ -2,7 +2,7 @@ package me.exslodingdogs.anticheat.Checks.Movement.FLY;
 
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
+import me.exslodingdogs.anticheat.Checks.Possibility;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,7 +12,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 public class TypeB extends Check implements Listener {
 
     public TypeB(){
-        super(CheckType.MOVENMENT, "FLY(TypeB)", true);
+        super(CheckType.MOVEMENT, "FLY(TypeB)", true);
     }
 
     @EventHandler
@@ -30,7 +30,7 @@ public class TypeB extends Check implements Listener {
         }
         if((to.getY() - from.getY()) >= 0.5){
             if(speed >= 0.79){
-                Flag(player, Posiblity.Possibly, 1);
+                flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
         }
