@@ -2,7 +2,7 @@ package me.exslodingdogs.anticheat.Checks.Movement;
 
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Possibility;
+import me.exslodingdogs.anticheat.Checks.Posiblity;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class NOFALL_check extends Check implements Listener {
 
     public NOFALL_check(){
-        super(CheckType.MOVEMENT, "NOFALL", true);
+        super(CheckType.MOVENMENT, "NOFALL(Fall)", true);
     }
 
     ArrayList<Player> needschecking = new ArrayList<>();
@@ -27,7 +27,7 @@ public class NOFALL_check extends Check implements Listener {
         }
         Player p = event.getPlayer();
         double i = event.getTo().toVector().distance(event.getFrom().toVector());
-        boolean onground = false;
+        boolean onground;
         if(event.getFrom().getY() < event.getTo().getY()){
             return;
         }
@@ -53,16 +53,13 @@ public class NOFALL_check extends Check implements Listener {
                         }else{
                             Level.put(p, 1);
                         }
-                        flag(p, Possibility.CERTAIN, Level.get(p));
+                        Flag(p, Posiblity.Certain, Level.get(p));
                         p.teleport(event.getFrom());
                     }
                 }
             }
         }
 
-        //p.sendMessage(p.getFallDistance() + "");
-        //p.sendMessage(i + "");
-        //p.sendMessage(onground + "");
 
     }
 

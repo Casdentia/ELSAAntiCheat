@@ -1,7 +1,7 @@
 package me.exslodingdogs.anticheat.Checks;
 
 public enum CheckType {
-    MOVEMENT,
+    MOVENMENT,
     COMBAT,
     BLOCK,
     OTHER

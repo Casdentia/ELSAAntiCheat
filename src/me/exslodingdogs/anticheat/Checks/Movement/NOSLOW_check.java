@@ -2,7 +2,8 @@ package me.exslodingdogs.anticheat.Checks.Movement;
 
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Possibility;
+import me.exslodingdogs.anticheat.Checks.Posiblity;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 public class NOSLOW_check extends Check implements Listener {
 
     public NOSLOW_check(){
-        super(CheckType.MOVEMENT, "NOSLOW", true);
+        super(CheckType.MOVENMENT, "NOSLOW", true);
     }
     HashMap<Player, Integer> Flags = new HashMap<>();
 
@@ -24,7 +25,6 @@ public class NOSLOW_check extends Check implements Listener {
         if(isEnabled() == false){
             return;
         }
-        //p.sendMessage(ChatColor.RED + "Speed: " + ChatColor.GRAY + v);
 
         if((event.getFrom().getY() < event.getTo().getY()) || (event.getFrom().getY() > event.getTo().getY())){
             return;
@@ -39,9 +39,9 @@ public class NOSLOW_check extends Check implements Listener {
                     Flags.put(p, 1);
                 }
                 if(Flags.get(p) > 4){
-                    flag(p, Possibility.CERTAIN, Flags.get(p));
+                    Flag(p, Posiblity.Certain, Flags.get(p));
                 }else{
-                    flag(p, Possibility.POSSIBLE, Flags.get(p));
+                    Flag(p, Posiblity.Possibly, Flags.get(p));
                 }
                 p.teleport(event.getFrom());
             }

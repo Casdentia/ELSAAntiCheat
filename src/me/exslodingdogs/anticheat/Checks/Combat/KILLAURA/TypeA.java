@@ -1,10 +1,10 @@
-package me.exslodingdogs.anticheat.Checks.Combat.KillAura;
+package me.exslodingdogs.anticheat.Checks.Combat.KILLAURA;
 
 import me.exslodingdogs.anticheat.AntiCheat;
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckResult;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Possibility;
+import me.exslodingdogs.anticheat.Checks.Posiblity;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -41,7 +41,7 @@ public class TypeA extends Check implements Listener {
                 cps.put(p, 1);
             }
             if(getResult() == CheckResult.FAIL){
-                flag(p, Possibility.CERTAIN, 1);
+                Flag(p, Posiblity.Certain, 1);
             }
         }
     }

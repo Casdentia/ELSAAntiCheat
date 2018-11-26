@@ -2,7 +2,7 @@ package me.exslodingdogs.anticheat.Checks.block;
 
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Possibility;
+import me.exslodingdogs.anticheat.Checks.Posiblity;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -43,7 +43,7 @@ public class FastPlaceCheck extends Check implements Listener {
         /* if time between block place is < 150; flag the player */
         if (between < 150) {
             alert = true;
-            super.flag(player, Possibility.POSSIBLE, pair.getValue());
+            super.Flag(player, Posiblity.Possibly, pair.getValue());
         }
 
         traceMap.put(player.getUniqueId(), Pair.of(placeTime, (short) (alert ? pair.getRight() + 1 : pair.getRight())));
