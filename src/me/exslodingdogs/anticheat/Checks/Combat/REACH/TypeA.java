@@ -2,7 +2,7 @@ package me.exslodingdogs.anticheat.Checks.Combat.REACH;
 
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
+import me.exslodingdogs.anticheat.Checks.Possibility;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,7 +30,7 @@ public class TypeA extends Check implements Listener {
 
         if(distance > 0.38){
             event.setCancelled(true);
-            Flag(p, Posiblity.Possibly, 1);
+            Flag(p, Possibility.POSSIBLE, 1);
         }
 
 

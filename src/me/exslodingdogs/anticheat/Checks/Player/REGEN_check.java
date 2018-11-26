@@ -2,7 +2,7 @@ package me.exslodingdogs.anticheat.Checks.Player;
 
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
+import me.exslodingdogs.anticheat.Checks.Possibility;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -45,9 +45,9 @@ public class REGEN_check extends Check implements Listener {
                 flagged.put(player, 1);
             }
             if(flagged.get(player) > 3){
-                Flag(player, Posiblity.Certain, flagged.get(player));
+                Flag(player, Possibility.CERTAIN, flagged.get(player));
             }else{
-                Flag(player, Posiblity.Possibly, flagged.get(player));
+                Flag(player, Possibility.POSSIBLE, flagged.get(player));
             }
 
         }

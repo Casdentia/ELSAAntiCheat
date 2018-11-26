@@ -4,7 +4,7 @@ import me.exslodingdogs.anticheat.AntiCheat;
 import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckResult;
 import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Posiblity;
+import me.exslodingdogs.anticheat.Checks.Possibility;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -41,7 +41,7 @@ public class TypeA extends Check implements Listener {
                 cps.put(p, 1);
             }
             if(getResult() == CheckResult.FAIL){
-                Flag(p, Posiblity.Certain, 1);
+                Flag(p, Possibility.CERTAIN, 1);
             }
         }
     }
@@ -58,13 +58,13 @@ public class TypeA extends Check implements Listener {
             if(flagged.get(player) > 4){
                 for(Player op :Bukkit.getOnlinePlayers()){
                     if(op.hasPermission("LAC.alerts")){
-                        op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &eKILLAURA(TypeA) &7[&cPosiblity: Certain&7][&cLVLl:" + flagged.get(player) + "&7]"));
+                        op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &eKILLAURA(TypeA) &7[&cPosiblity: CERTAIN&7][&cLVLl:" + flagged.get(player) + "&7]"));
                     }
                 }
             }else{
                 for(Player op :Bukkit.getOnlinePlayers()){
                     if(op.hasPermission("LAC.alerts")){
-                        op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &eKILLAURA(TypeA) &7[&cPosiblity: Possibly&7][&cLVLl:" + flagged.get(player) + "&7]"));
+                        op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &eKILLAURA(TypeA) &7[&cPosiblity: POSSIBLE&7][&cLVLl:" + flagged.get(player) + "&7]"));
                     }
                 }
             }

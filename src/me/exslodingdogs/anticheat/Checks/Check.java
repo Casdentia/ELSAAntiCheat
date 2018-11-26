@@ -10,7 +10,7 @@ public class Check {
 
     protected CheckType type;
     protected String nameofhack;
-    private Posiblity posiblity;
+    private Possibility possibility;
     private CheckResult result;
     private boolean enabled;
 
@@ -30,17 +30,17 @@ public class Check {
         return this.nameofhack;
     }
 
-    public Posiblity getPosiblity(){return posiblity;}
+    public Possibility getPossibility(){return possibility;}
 
     public static String cc(String msg){
         return ChatColor.translateAlternateColorCodes('&', msg);
     }
 
-    public void Flag(Player player, Posiblity posiblity, int alerts){
-        this.posiblity = posiblity;
+    public void Flag(Player player, Possibility possibility, int alerts){
+        this.possibility = possibility;
        for(Player op :Bukkit.getOnlinePlayers()){
            if(op.hasPermission("elsa.alerts")){
-               op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &e" + getHack() + " &8[&cPosiblity: " + getPosiblity() + "&8] [&cLVL: " + alerts + "&8]"));
+               op.sendMessage(cc(prefix + "&c" + player.getName() + " &7failed &e" + getHack() + " &8[&cPosiblity: " + getPossibility() + "&8] [&cLVL: " + alerts + "&8]"));
            }
        }
     }
