@@ -3,6 +3,7 @@ package me.exslodingdogs.anticheat;
 import me.exslodingdogs.anticheat.Checks.Movement.NOFALL_check;
 import me.exslodingdogs.anticheat.Checks.Movement.NOSLOW_check;
 import me.exslodingdogs.anticheat.Checks.Player.REGEN_check;
+import me.exslodingdogs.anticheat.Checks.block.FastPlaceCheck;
 import me.exslodingdogs.anticheat.Commands.Elsa_Command;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -41,6 +42,8 @@ public class AntiCheat extends JavaPlugin implements Listener {
 
             //REACH CHECKS
             Bukkit.getPluginManager().registerEvents(new me.exslodingdogs.anticheat.Checks.Combat.REACH.TypeA(), this);
+
+            Bukkit.getPluginManager().registerEvents(new FastPlaceCheck(), this);
         }
 
 
