@@ -4,5 +4,6 @@ public enum CheckType {
     MOVEMENT,
     COMBAT,
     BLOCK,
+    PACKET,
     OTHER
 }

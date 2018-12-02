@@ -40,10 +40,11 @@ public class FastPlaceCheck extends Check implements Listener {
 
         boolean alert = false;
 
-        /* if time between block place is < 150; flag the player */
-        if (between < 150) {
+        if (between < 70 && between > 29) {
             alert = true;
+            //player.sendMessage(between + "");
             super.flag(player, Possibility.POSSIBLE, pair.getValue());
+            event.setCancelled(true);
         }
 
         traceMap.put(player.getUniqueId(), Pair.of(placeTime, (short) (alert ? pair.getRight() + 1 : pair.getRight())));

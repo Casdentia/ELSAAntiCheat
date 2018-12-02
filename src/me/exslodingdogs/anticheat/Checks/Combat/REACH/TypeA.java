@@ -26,9 +26,9 @@ public class TypeA extends Check implements Listener {
         Player p = (Player) event.getDamager();
         Entity t = event.getEntity();
         double distance = p.getLocation().toVector().distance(t.getLocation().toVector());
-        //p.sendMessage(p.getLocation().toVector().distance(t.getLocation().toVector()) + "");
+        p.sendMessage(p.getLocation().toVector().distance(t.getLocation().toVector()) + "");
 
-        if(distance > 0.38){
+        if(distance > 4){
             event.setCancelled(true);
             flag(p, Possibility.POSSIBLE, 1);
         }

@@ -4,6 +4,7 @@ import me.exslodingdogs.anticheat.Checks.Check;
 import me.exslodingdogs.anticheat.Checks.CheckType;
 import me.exslodingdogs.anticheat.Checks.Possibility;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,20 +28,21 @@ public class TypeA extends Check implements Listener {
             return;
         }
 
-        /*
 
-    This has some bugs
-
-     */
-
-        player.sendMessage(ChatColor.RED + "SPEED: " + ChatColor.GRAY + speed);
+        if(player.isFlying()){
+            return;
+        }
+        if((to.getY() - from.getY()) < 0){
+            return;
+        }
+        //player.sendMessage(ChatColor.RED + "SPEED: " + ChatColor.GRAY + speed);
         if((to.getY() - from.getY()) == 0){
             if(speed > 0.79){
                 flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
 
-            if(speed > 0.49 && speed < 0.525){
+            if(speed > 0.49 && speed < 0.515){
                 flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
@@ -48,7 +50,7 @@ public class TypeA extends Check implements Listener {
                 flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
-            if(speed > 0.66 && speed < 0.67){
+            if(speed > 0.66 && speed < 0.679){
                 flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
@@ -65,15 +67,15 @@ public class TypeA extends Check implements Listener {
                 flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
-            if(speed > 0.146 && speed < 0.149){
+            if(speed > 0.146 && speed < 0.147){
                 flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
-            if(speed > 0.1738 && speed < 0.1762){
+            if(speed > 0.1738 && speed < 0.1742){
                 flag(player, Possibility.POSSIBLE, 1);
                 player.teleport(from);
             }
-            if(speed > 0.2899 && speed < 0.29){
+            if(speed > 0.28999 && speed < 0.29){
                 flag(player, Possibility.CERTAIN, 1);
                 player.teleport(from);
             }
@@ -84,22 +86,7 @@ public class TypeA extends Check implements Listener {
             return;
         }
 
-        if((to.getY() - from.getY()) > 0){
-            if((to.getY() - from.getY()) > 0.2 && (to.getY() - from.getY()) < 0.35){
-                return;
-            }
-            if((to.getY() - from.getY()) > 0.9){
-                return;
-            }
-            if(speed > 0.8){
-                event.setCancelled(true);
-                player.teleport(from);
-                flag(player, Possibility.CERTAIN, 1);
-                return;
-            }
 
-            return;
-        }
 
     }
 
