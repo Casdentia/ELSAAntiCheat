@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ElsaAntiCheat">
+    <output-path>$PROJECT_DIR$/../../PluginVersion</output-path>
+    <root id="archive" name="ElsaAntiCheat.jar" />
+  </artifact>
+</component>
