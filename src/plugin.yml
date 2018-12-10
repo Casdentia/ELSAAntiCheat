@@ -1,8 +1,7 @@
-name: elsa
+name: ELSA
 version: 1.0
 author: ExslodingDogs
 main: me.exslodingdogs.anticheat.AntiCheat
-depend: [ProtocolLib]
 
 commands:
   elsa:
@@ -10,4 +9,6 @@ commands:
 
 permissions:
   elsa.alerts:
+    default: op
+  elsa.help:
     default: op

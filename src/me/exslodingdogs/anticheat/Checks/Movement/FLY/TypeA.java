@@ -1,42 +1,24 @@
 package me.exslodingdogs.anticheat.Checks.Movement.FLY;
 
-import me.exslodingdogs.anticheat.Checks.Check;
-import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Possibility;
-import org.bukkit.Location;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.entity.Player;
 
-public class TypeA extends Check implements Listener {
+import me.exslodingdogs.anticheat.Checks.CheckResult;
 
-    public TypeA(){
-        super(CheckType.MOVEMENT, "FLY(TypeA)", true);
+public class TypeA{
+
+    
+    public static CheckResult runCheck(Player player, double speed, double jumphight) {
+    	if(player.getAllowFlight() == true){
+            return CheckResult.PASS;
+        }
+        if(jumphight != 0){
+            return CheckResult.PASS;
+        }
+        if(!player.getLocation().subtract(0,1,0).getBlock().getType().isSolid() && speed > 0.8){
+        	return CheckResult.FAIL;
+        }
+        return CheckResult.PASS;
     }
-
-    @EventHandler
-    public void onmove(PlayerMoveEvent event){
-        Location from = event.getFrom();
-        Location to = event.getTo();
-        double speed = event.getFrom().toVector().distance(event.getTo().toVector());
-
-        if(isEnabled() == false){
-            return;
-        }
-
-        if(event.getPlayer().getAllowFlight() == true){
-            return;
-        }
-        if((to.getY() - from.getY()) != 0){
-            return;
-        }
-        if(!event.getPlayer().getLocation().subtract(0,1,0).getBlock().getType().isSolid() && speed > 0.8){
-            event.setCancelled(true);
-            event.getPlayer().teleport(from);
-            flag(event.getPlayer(), Possibility.CERTAIN, 1);
-        }
-
-    }
-
+    
 
 }

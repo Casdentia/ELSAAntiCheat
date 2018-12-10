@@ -1,16 +1,16 @@
 package me.exslodingdogs.anticheat.Checks.Combat.KILLAURA;
 
-import me.exslodingdogs.anticheat.Checks.Check;
-import me.exslodingdogs.anticheat.Checks.CheckType;
-import org.bukkit.event.Listener;
+import org.bukkit.entity.Player;
 
-public class TypeA extends Check implements Listener {
+import me.exslodingdogs.anticheat.Checks.CheckResult;
 
-   public TypeA(){
-       super(CheckType.COMBAT, "KILLARUA(TypeA)", true);
-   }
+public class TypeA {
 
-
-
-
+	public static CheckResult runCheck(Player player) {
+		
+		
+		
+		return CheckResult.PASS;
+	}
+	
 }

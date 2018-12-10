@@ -1,53 +1,39 @@
 package me.exslodingdogs.anticheat.Checks.block;
 
-import me.exslodingdogs.anticheat.Checks.Check;
-import me.exslodingdogs.anticheat.Checks.CheckType;
-import me.exslodingdogs.anticheat.Checks.Possibility;
-import org.apache.commons.lang3.tuple.Pair;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class FastPlaceCheck extends Check implements Listener {
+import org.apache.commons.lang3.tuple.Pair;
+import org.bukkit.entity.Player;
 
-    private Map<UUID, Pair<Long, Short>> traceMap = new HashMap<>();
+import me.exslodingdogs.anticheat.Checks.CheckResult;
 
-    public FastPlaceCheck() {
-        super(CheckType.BLOCK, "FAST-PLACE", true);
-    }
+public class FastPlaceCheck{
 
-    @EventHandler
-    public void onBlockPlace(BlockPlaceEvent event) {
-
-        long placeTime = System.currentTimeMillis();
-        Player player = event.getPlayer();
+    private static Map<UUID, Pair<Long, Short>> traceMap = new HashMap<>();
+    
+    public static CheckResult runCheck(Player player) {    	
+    	long placeTime = System.currentTimeMillis();
         UUID uuid = player.getUniqueId();
-
-
         if (!traceMap.containsKey(uuid)) {
             traceMap.put(uuid, Pair.of(placeTime, (short) 0));
-            return;
+            return CheckResult.PASS;
         }
-
         Pair<Long, Short> pair = traceMap.get(uuid);
-
         long between = placeTime - pair.getLeft();
-
         boolean alert = false;
-
+        //player.sendMessage(between + "");
         if (between < 70 && between > 29) {
             alert = true;
-            //player.sendMessage(between + "");
-            super.flag(player, Possibility.POSSIBLE, pair.getValue());
-            event.setCancelled(true);
+            return CheckResult.FAIL;
         }
-
-        traceMap.put(player.getUniqueId(), Pair.of(placeTime, (short) (alert ? pair.getRight() + 1 : pair.getRight())));
+        if(between == 3 || between == 2) {
+        	alert = true;
+            return CheckResult.FAIL;
+        }
+        traceMap.put(player.getUniqueId(), Pair.of(placeTime, (short) (alert ? pair.getRight() + 1 : pair.getRight())));    	
+    	return CheckResult.PASS;
     }
-
+    
 }
