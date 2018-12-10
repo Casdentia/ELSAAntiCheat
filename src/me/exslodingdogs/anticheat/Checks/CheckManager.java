@@ -27,7 +27,7 @@ public class CheckManager implements Listener{
 		double speed = from.toVector().distance(to.toVector());
 		double jumphight = to.getY()-from.getY();
 		//player.sendMessage(ChatColor.GREEN + "SPEED : " + speed + " jumphight : " + jumphight);
-		player.sendMessage(ChatColor.GREEN + "PITCH : " + player.getEyeLocation().getPitch());
+		//player.sendMessage(ChatColor.GREEN + "PITCH : " + player.getEyeLocation().getPitch());
 		//FLY Checks
 		if(me.exslodingdogs.anticheat.Checks.Movement.FLY.TypeA.runCheck(player, speed, jumphight) == CheckResult.FAIL) {
 			flag(player, "&eFLY(TypeA) &8[&cPosiblity: CERTAIN&8]");
